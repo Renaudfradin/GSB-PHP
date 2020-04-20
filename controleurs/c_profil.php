@@ -1,5 +1,12 @@
 <?php
-include("vues/v_sommaire_visiteur.php");
+$statue = $_SESSION["statu-id"];
+if ($statue == "visiteur") {
+    include("vues/v_sommaire_visiteur.php");
+} elseif ($statue == "administrateur") {
+    include("vues/v_sommaire_admin.php");
+} elseif ($statue == "comptable") {
+    include("vues/v_sommaire_contable.php");
+}
 $action = $_REQUEST['action'];
 $uc = $_REQUEST['uc'];
 switch ($action) {

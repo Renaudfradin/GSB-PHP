@@ -59,7 +59,7 @@ class PdoGsb{
 	}
 	public function getInfosVisiteur1(){
 		$req1 = PdoGsb::$monPdo->query("SELECT * FROM visiteur");
-		//var_dump($req1);
+		var_dump($req1);
 		$ligne1 = $req1->fetchAll();
 		$nbLignes = count($ligne1);
 		for ($i=0; $i < $nbLignes; $i++) { 
@@ -68,24 +68,15 @@ class PdoGsb{
 	}
 	public function deltevisiteur($id){
 		$sql = "DELETE FROM visiteur WHERE id = '{$id}'";
-		//var_dump($sql);
-		//$req = PdoGsb::$monPdo->query("DELETE FROM visiteur WHERE id = '{$id}'");
+		var_dump($sql);
 		$req = PdoGsb::$monPdo->prepare($sql);
-		$req->execute(array($id));
-		//var_dump($req);
+		$req->execute(array($id));		
 	}
 	public function getinfos($id){
 		$sql = "SELECT * FROM visiteur WHERE id = '{$id}'";	
 		$req11 = PdoGsb::$monPdo->query($sql);
 		$ligne2 = $req11->fetch();
 		return $ligne2;
-	}
-	public function updateinfocompte($id1,$nom1,$prenom1,$login1,$adresse1,$cp1,$ville1,$datembauche1,$statu1,$id){
-		$sql = "UPDATE visiteur SET id = '{$id1}', nom ='{$nom1}', prenom = '{$prenom1}', login = '{$login1}' , adresse = '{$adresse1}' , cp = '{$cp1}', ville = '{$ville1}' , dateEmbauche = '{$datembauche1}' , statu-id = '{$statu1}'  WHERE id = '{$id}' ";
-		//var_dump($sql);
-		$requp = PdoGsb::$monPdo->query($sql);
-		//var_dump($requp);
-
 	}
 	public function updatecomptevisiteurnom($nom1,$id){
 		$sql = "UPDATE visiteur SET nom = '{$nom1}' WHERE id = '{$id}' ";
@@ -136,6 +127,100 @@ class PdoGsb{
 		$reqmdpupcop = PdoGsb::$monPdo->prepare($sql2);
 		$reqmdpupcop->execute(array($mdp1,$id));
 	}
+
+
+
+
+	public function updatecomptevisiteurid($idmodif,$id){
+		$sql = "UPDATE visiteur SET id = '{$idmodif}' WHERE id = '{$id}' ";
+		$requpdate = PdoGsb::$monPdo->prepare($sql);
+		$requpdate->execute(array($idmodif,$id));
+		$sql2 = "UPDATE visiteurcop SET id = '{$idmodif}' WHERE id = '{$id}' ";
+		$reqmdpupcop = PdoGsb::$monPdo->prepare($sql2);
+		$reqmdpupcop->execute(array($idmodif,$id));
+	}
+	public function updatecomptevisiteurnom1($nom,$id){
+		$sql = "UPDATE visiteur SET nom = '{$nom}' WHERE id = '{$id}' ";
+		$requpdate = PdoGsb::$monPdo->prepare($sql);
+		$requpdate->execute(array($nom,$id));
+		$sql2 = "UPDATE visiteurcop SET nom = '{$nom}' WHERE id = '{$id}' ";
+		$reqmdpupcop = PdoGsb::$monPdo->prepare($sql2);
+		$reqmdpupcop->execute(array($nom,$id));
+	}
+	public function updatecomptevisiteurprenom1($prenom,$id){
+		$sql = "UPDATE visiteur SET prenom = '{$prenom}' WHERE id = '{$id}' ";
+		$requpdate = PdoGsb::$monPdo->prepare($sql);
+		$requpdate->execute(array($prenom,$id));
+		$sql2 = "UPDATE visiteurcop SET prenom = '{$prenom}' WHERE id = '{$id}' ";
+		$reqmdpupcop = PdoGsb::$monPdo->prepare($sql2);
+		$reqmdpupcop->execute(array($prenom,$id));
+	}
+	public function updatecomptevisiteurlogin($login,$id){
+		$sql = "UPDATE visiteur SET login = '{$login}' WHERE id = '{$id}' ";
+		$requpdate = PdoGsb::$monPdo->prepare($sql);
+		$requpdate->execute(array($login,$id));
+		$sql2 = "UPDATE visiteurcop SET login = '{$login}' WHERE id = '{$id}' ";
+		$reqmdpupcop = PdoGsb::$monPdo->prepare($sql2);
+		$reqmdpupcop->execute(array($login,$id));
+	}
+	public function updatecomptevisiteuradresse($adresse,$id){
+		$sql = "UPDATE visiteur SET adresse = '{$adresse}' WHERE id = '{$id}' ";
+		$requpdate = PdoGsb::$monPdo->prepare($sql);
+		$requpdate->execute(array($adresse,$id));
+		$sql2 = "UPDATE visiteurcop SET adresse = '{$adresse}' WHERE id = '{$id}' ";
+		$reqmdpupcop = PdoGsb::$monPdo->prepare($sql2);
+		$reqmdpupcop->execute(array($adresse,$id));
+	}
+	public function updatecomptevisiteurcp($cp,$id){
+		$sql = "UPDATE visiteur SET cp = '{$cp}' WHERE id = '{$id}' ";
+		$requpdate = PdoGsb::$monPdo->prepare($sql);
+		$requpdate->execute(array($cp,$id));
+		$sql2 = "UPDATE visiteurcop SET cp = '{$cp}' WHERE id = '{$id}' ";
+		$reqmdpupcop = PdoGsb::$monPdo->prepare($sql2);
+		$reqmdpupcop->execute(array($cp,$id));
+	}
+	public function updatecomptevisiteurville($ville,$id){
+		$sql = "UPDATE visiteur SET ville = '{$ville}' WHERE id = '{$id}' ";
+		$requpdate = PdoGsb::$monPdo->prepare($sql);
+		$requpdate->execute(array($ville,$id));
+		$sql2 = "UPDATE visiteurcop SET ville = '{$ville}' WHERE id = '{$id}' ";
+		$reqmdpupcop = PdoGsb::$monPdo->prepare($sql2);
+		$reqmdpupcop->execute(array($ville,$id));
+	}
+	public function updatecomptevisiteurdate($datembauche,$id){
+		$sql = "UPDATE visiteur SET dateEmbauche = '{$datembauche}' WHERE id = '{$id}' ";
+		$requpdate = PdoGsb::$monPdo->prepare($sql);
+		$requpdate->execute(array($datembauche,$id));
+		$sql2 = "UPDATE visiteurcop SET dateEmbauche = '{$datembauche}' WHERE id = '{$id}' ";
+		$reqmdpupcop = PdoGsb::$monPdo->prepare($sql2);
+		$reqmdpupcop->execute(array($datembauche,$id));
+	}
+	public function updatecomptevisiteurstatu($statu,$id){
+		$sql = "UPDATE visiteur SET statu-id = '{$statu}' WHERE id = '{$id}' ";
+		$requpdate = PdoGsb::$monPdo->prepare($sql);
+		$requpdate->execute(array($statu,$id));
+		$sql2 = "UPDATE visiteurcop SET statu-id = '{$statu}' WHERE id = '{$id}' ";
+		$reqmdpupcop = PdoGsb::$monPdo->prepare($sql2);
+		$reqmdpupcop->execute(array($statu,$id));
+	}
+	public function updatecomptevisiteurmdp($mdp1,$id){
+		$mdpcrip = password_hash($mdp1, PASSWORD_BCRYPT);
+		$sql = "UPDATE visiteur SET mdp = '{$mdpcrip}' WHERE id = '{$id}' ";
+		$requpdate = PdoGsb::$monPdo->prepare($sql);
+		$requpdate->execute(array($mdpcrip,$id));
+		$sql2 = "UPDATE visiteurcop SET mdp = '{$mdp1}' WHERE id = '{$id}' ";
+		$reqmdpupcop = PdoGsb::$monPdo->prepare($sql2);
+		$reqmdpupcop->execute(array($mdp1,$id));
+	}
+
+	public function createcompte($id,$nom,$prenom,$login,$mdp,$adresse,$cp,$ville,$date,$statu){
+		$mdpcript = password_hash($mdp, PASSWORD_BCRYPT);
+		$sql = "INSERT INTO `visiteur` (`id`,`nom`,`prenom`,`login`,`mdp`,`adresse`,`cp`,`ville`,`dateEmbauche`,`statu-id`) VALUE ('$id','$nom','$prenom','$login','$mdpcript','$adresse','$cp','$ville','$date','$statu')";
+		var_dump($sql);
+		$reqcrea = PdoGsb::$monPdo->prepare($sql);
+		$reqcrea->execute(array($id,$nom,$prenom,$login,$mdpcript,$adresse,$cp,$ville,$date,$statu));
+	}
+	
 
 
 /**

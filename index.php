@@ -31,19 +31,27 @@ switch($uc){
 		break;
 	}
 	case 'modifcompte' :{
-		include("controleurs/c_modifcompte.php");
+		include("controleurs/c_voirutilisateur.php");
 		break;
+	}
+	case 'suprimmercompte' : {
+		include("controleurs/c_voirutilisateur.php");
+	    break;
 	}
 	case 'profil' : {
 		include("controleurs/c_profil.php");
 	    break;
 	}
 	case 'modifcomptevisiteur' :{
-		include ("controleurs/c_profil.php");
+		include("controleurs/c_profil.php");
 		break;
 	}
 	case 'mentionlegal' :{
-		include ("controleurs/c_mentionlegal.php");
+		include("controleurs/c_mentionlegal.php");
+		break;
+	}
+	case 'creationcompte' :{
+		include("controleurs/c_creationcompte.php");
 		break;
 	}
 }
