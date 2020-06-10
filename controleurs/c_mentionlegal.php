@@ -8,5 +8,7 @@ if ($statu == !FALSE) {
     } elseif ($statu == "comptable") {
         include("vues/v_sommaire_contable.php");
     }
+}else{
+    include("vues/v_sommaire_nolog.php");
 }
 include("vues/mentionlegal.php");
